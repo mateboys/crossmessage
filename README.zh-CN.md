@@ -475,7 +475,7 @@ console.log('登录完成');
 
 **⭐ 如果 CrossMessage 对您有帮助，请给我们一个星标！**
 
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage-js.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage-js/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage-js.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage-js/network)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage/network)
 
 </div>

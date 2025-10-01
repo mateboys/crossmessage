@@ -485,7 +485,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 **⭐ If CrossMessage helps you, please give us a star!**
 
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage-js.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage-js/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage-js.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage-js/network)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage/network)
 
 </div>
