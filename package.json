@@ -1,6 +1,6 @@
 {
-  "name": "crossmessage",
-  "version": "1.0.0",
+  "name": "crossmessage-js",
+  "version": "1.0.1",
   "description": "Enterprise-grade cross-domain window communication library with reliable message delivery guarantee",
   "main": "crossmessage.js",
   "module": "crossmessage.esm.js",

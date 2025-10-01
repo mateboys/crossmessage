@@ -6,10 +6,10 @@
 
 </div>
 
-[![npm version](https://badge.fury.io/js/crossmessage.svg)](https://badge.fury.io/js/crossmessage)
+[![npm version](https://badge.fury.io/js/crossmessage-js.svg)](https://badge.fury.io/js/crossmessage-js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/issues)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage-js.svg)](https://github.com/mateboys/crossmessage-js/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage-js.svg)](https://github.com/mateboys/crossmessage-js/issues)
 
 CrossMessage 是一个基于 `postMessage` 的跨域窗口通信库，专为解决跨域 Web 应用间的可靠数据传递而设计。当传统的 URL 参数传递方式无法满足复杂数据交换需求时，CrossMessage 提供了稳定、安全、易用的解决方案。
 
@@ -44,13 +44,13 @@ CrossMessage 是一个基于 `postMessage` 的跨域窗口通信库，专为解�
 
 ```bash
 # npm
-npm install crossmessage
+npm install crossmessage-js
 
 # yarn
-yarn add crossmessage
+yarn add crossmessage-js
 
 # pnpm
-pnpm add crossmessage
+pnpm add crossmessage-js
 ```
 
 ### CDN 引用
@@ -59,30 +59,30 @@ pnpm add crossmessage
 
 ```html
 <!-- UMD 版本 -->
-<script src="https://unpkg.com/crossmessage@latest/crossmessage.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage-js.js"></script>
 
 <!-- ES Module 版本 -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crossmessage.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage-js.esm.js';
 </script>
 
 <!-- 指定版本 -->
-<script src="https://unpkg.com/crossmessage@1.0.1/crossmessage.js"></script>
+<script src="https://unpkg.com/crossmessage-js@1.0.1/crossmessage-js.js"></script>
 ```
 
 #### jsDelivr
 
 ```html
 <!-- UMD 版本 -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage@latest/crossmessage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage-js.js"></script>
 
 <!-- ES Module 版本 -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage@latest/crossmessage.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage-js.esm.js';
 </script>
 
 <!-- 指定版本 -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage@1.0.1/crossmessage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@1.0.1/crossmessage-js.js"></script>
 ```
 
 #### CDN 优势
@@ -99,7 +99,7 @@ pnpm add crossmessage
 #### ES Module (推荐)
 
 ```javascript
-import { sendUntilAck, receiveOnce, openAndSend } from 'crossmessage';
+import { sendUntilAck, receiveOnce, openAndSend } from 'crossmessage-js';
 
 // 📤 发送消息 - 等待确认
 const result = await sendUntilAck('user-data', { 
@@ -127,7 +127,7 @@ const result = await openAndSend('https://example.com/page', 'init-data', {
 ### UMD / CommonJS
 
 ```javascript
-const CrossMessage = require('crossmessage');
+const CrossMessage = require('crossmessage-js');
 
 // 发送消息
 CrossMessage.sendUntilAck('message-key', payload, options)
@@ -143,7 +143,7 @@ CrossMessage.receiveOnce('message-key', options)
 
 ```html
 <!-- 使用 unpkg CDN -->
-<script src="https://unpkg.com/crossmessage@latest/crossmessage.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage-js.js"></script>
 <script>
   // 发送消息
   CrossMessage.sendUntilAck('data', { message: 'Hello World' })
@@ -159,7 +159,7 @@ CrossMessage.receiveOnce('message-key', options)
 
 ```html
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crossmessage.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage-js.esm.js';
   
   // 发送消息
   const result = await sendUntilAck('data', { message: 'Hello World' });
@@ -406,7 +406,7 @@ console.log('登录完成');
 
 **⭐ 如果 CrossMessage 对您有帮助，请给我们一个星标！**
 
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage/network)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage-js.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage-js/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage-js.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage-js/network)
 
 </div>

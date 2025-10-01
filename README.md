@@ -6,10 +6,10 @@
 
 </div>
 
-[![npm version](https://badge.fury.io/js/crossmessage.svg)](https://badge.fury.io/js/crossmessage)
+[![npm version](https://badge.fury.io/js/crossmessage-js.svg)](https://badge.fury.io/js/crossmessage-js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/issues)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage-js.svg)](https://github.com/mateboys/crossmessage-js/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage-js.svg)](https://github.com/mateboys/crossmessage-js/issues)
 
 
 CrossMessage is a cross-domain window communication library based on `postMessage`, designed to solve reliable data transmission between cross-domain web applications. When traditional URL parameter passing methods cannot meet complex data exchange requirements, CrossMessage provides a stable, secure, and easy-to-use solution.
@@ -41,13 +41,13 @@ Its main purpose is to enable stable and reliable data transmission between two 
 
 ```bash
 # npm
-npm install crossmessage
+npm install crossmessage-js
 
 # yarn
-yarn add crossmessage
+yarn add crossmessage-js
 
 # pnpm
-pnpm add crossmessage
+pnpm add crossmessage-js
 ```
 
 ### CDN Reference
@@ -56,30 +56,30 @@ pnpm add crossmessage
 
 ```html
 <!-- UMD Version -->
-<script src="https://unpkg.com/crossmessage@latest/crossmessage.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage-js.js"></script>
 
 <!-- ES Module Version -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crossmessage.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage-js.esm.js';
 </script>
 
 <!-- Specific Version -->
-<script src="https://unpkg.com/crossmessage@1.0.1/crossmessage.js"></script>
+<script src="https://unpkg.com/crossmessage-js@1.0.1/crossmessage-js.js"></script>
 ```
 
 #### jsDelivr
 
 ```html
 <!-- UMD Version -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage@latest/crossmessage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage-js.js"></script>
 
 <!-- ES Module Version -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage@latest/crossmessage.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage-js.esm.js';
 </script>
 
 <!-- Specific Version -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage@1.0.1/crossmessage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@1.0.1/crossmessage-js.js"></script>
 ```
 
 #### CDN Advantages
@@ -96,7 +96,7 @@ pnpm add crossmessage
 #### ES Module (Recommended)
 
 ```javascript
-import { sendUntilAck, receiveOnce, openAndSend } from 'crossmessage';
+import { sendUntilAck, receiveOnce, openAndSend } from 'crossmessage-js';
 
 // 📤 Send message - wait for acknowledgment
 const result = await sendUntilAck('user-data', { 
@@ -124,7 +124,7 @@ const result = await openAndSend('https://example.com/page', 'init-data', {
 #### UMD / CommonJS
 
 ```javascript
-const CrossMessage = require('crossmessage');
+const CrossMessage = require('crossmessage-js');
 
 // Send message
 CrossMessage.sendUntilAck('message-key', payload, options)
@@ -140,7 +140,7 @@ CrossMessage.receiveOnce('message-key', options)
 
 ```html
 <!-- Using unpkg CDN -->
-<script src="https://unpkg.com/crossmessage@latest/crossmessage.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage-js.js"></script>
 <script>
   // Send message
   CrossMessage.sendUntilAck('data', { message: 'Hello World' })
@@ -156,7 +156,7 @@ CrossMessage.receiveOnce('message-key', options)
 
 ```html
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crossmessage.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage-js.esm.js';
   
   // Send message
   const result = await sendUntilAck('data', { message: 'Hello World' });
@@ -385,7 +385,7 @@ We welcome all forms of contributions! Whether reporting issues, suggesting feat
 
 ### Ways to Contribute
 
-- 🐛 **Report Bugs**: Report issues in [Issues](https://github.com/mateboys/crossmessage/issues)
+- 🐛 **Report Bugs**: Report issues in [Issues](https://github.com/mateboys/crossmessage-js/issues)
 - 💡 **Feature Suggestions**: Propose new features or improvements
 - 📝 **Documentation Improvements**: Improve documentation and examples
 - 🔧 **Code Contributions**: Submit Pull Requests
@@ -412,7 +412,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 **⭐ If CrossMessage helps you, please give us a star!**
 
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage/network)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage-js.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage-js/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage-js.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage-js/network)
 
 </div>
