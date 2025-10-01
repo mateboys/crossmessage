@@ -1,7 +1,7 @@
 /* global define, module */
 /*!
  * crossmessage.js  ·  Cross-Domain Window Reliable Message Delivery
- * @Author: 刘希航 <liu.xihang@zte.com.cn>
+ * @Author: 刘希航 <mateboy@foxmail.com>
  * @Date: 2025-10-01 20:00:00
  * @Description: Enterprise-grade cross-domain window communication library with reliable message delivery guarantee
  */
