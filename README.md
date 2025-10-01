@@ -303,12 +303,11 @@ Receiver (Tab B):
 ```html
 <script src="/crossmessage.js"></script>
 <script>
-  // Force set window.name for reliable addressing
-  CrossMessage.receiveOnce('init', { name: { value: 'account-center', deep: true }, timeout: 1 }).catch(()=>{});
-
-  // Later, actually receive business data
-  CrossMessage.receiveOnce('user-sync', { allowedOrigins: ['https://app-a.example.com'] })
-    .then(data => console.log('received:', data));
+  // One-step: set window.name and receive the target message
+  CrossMessage.receiveOnce('user-sync', {
+    name: { value: 'account-center', deep: true },
+    allowedOrigins: ['https://app-a.example.com']
+  }).then(data => console.log('received:', data));
 </script>
 ```
 

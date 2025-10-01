@@ -304,12 +304,11 @@ await openAndSend('https://app-b.example.com/tab-b', 'user-sync', { userId: 'u-1
 ```html
 <script src="/crossmessage.js"></script>
 <script>
-  // 强制设置 window.name，便于按名寻址
-  CrossMessage.receiveOnce('init', { name: { value: 'account-center', deep: true }, timeout: 1 }).catch(()=>{});
-
-  // 实际接收业务数据
-  CrossMessage.receiveOnce('user-sync', { allowedOrigins: ['https://app-a.example.com'] })
-    .then(data => console.log('received:', data));
+  // 一步到位：设置 window.name 并接收目标消息
+  CrossMessage.receiveOnce('user-sync', {
+    name: { value: 'account-center', deep: true },
+    allowedOrigins: ['https://app-a.example.com']
+  }).then(data => console.log('received:', data));
 </script>
 ```
 
