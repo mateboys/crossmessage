@@ -8,8 +8,8 @@
 
 [![npm version](https://badge.fury.io/js/crossmessage-js.svg)](https://badge.fury.io/js/crossmessage-js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage-js.svg)](https://github.com/mateboys/crossmessage-js/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage-js.svg)](https://github.com/mateboys/crossmessage-js/issues)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/issues)
 
 CrossMessage 是一个基于 `postMessage` 的跨域窗口通信库，专为解决跨域 Web 应用间的可靠数据传递而设计。当传统的 URL 参数传递方式无法满足复杂数据交换需求时，CrossMessage 提供了稳定、安全、易用的解决方案。
 

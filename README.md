@@ -8,8 +8,8 @@
 
 [![npm version](https://badge.fury.io/js/crossmessage-js.svg)](https://badge.fury.io/js/crossmessage-js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage-js.svg)](https://github.com/mateboys/crossmessage-js/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage-js.svg)](https://github.com/mateboys/crossmessage-js/issues)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/issues)
 
 
 CrossMessage is a cross-domain window communication library based on `postMessage`, designed to solve reliable data transmission between cross-domain web applications. When traditional URL parameter passing methods cannot meet complex data exchange requirements, CrossMessage provides a stable, secure, and easy-to-use solution.
