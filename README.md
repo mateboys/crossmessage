@@ -6,7 +6,7 @@
 
 </div>
 
-[![npm version](https://badge.fury.io/js/crossmessage.svg)](https://badge.fury.io/js/crossmessage)
+[![npm version](https://badge.fury.io/js/crossmessage-js.svg)](https://badge.fury.io/js/crossmessage-js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/mateboys/crosspost.svg)](https://github.com/mateboys/crosspost/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/mateboys/crosspost.svg)](https://github.com/mateboys/crosspost/issues)
@@ -41,13 +41,13 @@ Its main purpose is to enable stable and reliable data transmission between two 
 
 ```bash
 # npm
-npm install crossmessage
+npm install crossmessage-js
 
 # yarn
-yarn add crossmessage
+yarn add crossmessage-js
 
 # pnpm
-pnpm add crossmessage
+pnpm add crossmessage-js
 ```
 
 ### CDN Reference
@@ -56,30 +56,30 @@ pnpm add crossmessage
 
 ```html
 <!-- UMD Version -->
-<script src="https://unpkg.com/crossmessage@latest/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage.js"></script>
 
 <!-- ES Module Version -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage.esm.js';
 </script>
 
 <!-- Specific Version -->
-<script src="https://unpkg.com/crossmessage@1.0.1/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage-js@1.0.1/crossmessage.js"></script>
 ```
 
 #### jsDelivr
 
 ```html
 <!-- UMD Version -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage@latest/crosspost.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage.js"></script>
 
 <!-- ES Module Version -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage.esm.js';
 </script>
 
 <!-- Specific Version -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage@1.0.1/crosspost.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@1.0.1/crossmessage.js"></script>
 ```
 
 #### CDN Advantages
@@ -96,7 +96,7 @@ pnpm add crossmessage
 #### ES Module (Recommended)
 
 ```javascript
-import { sendUntilAck, receiveOnce, openAndSend } from 'crossmessage';
+import { sendUntilAck, receiveOnce, openAndSend } from 'crossmessage-js';
 
 // 📤 Send message - wait for acknowledgment
 const result = await sendUntilAck('user-data', { 
@@ -124,7 +124,7 @@ const result = await openAndSend('https://example.com/page', 'init-data', {
 #### UMD / CommonJS
 
 ```javascript
-const CrossMessage = require('crossmessage');
+const CrossMessage = require('crossmessage-js');
 
 // Send message
 CrossMessage.sendUntilAck('message-key', payload, options)
@@ -140,7 +140,7 @@ CrossMessage.receiveOnce('message-key', options)
 
 ```html
 <!-- Using unpkg CDN -->
-<script src="https://unpkg.com/crossmessage@latest/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage.js"></script>
 <script>
   // Send message
   CrossMessage.sendUntilAck('data', { message: 'Hello World' })
@@ -156,7 +156,7 @@ CrossMessage.receiveOnce('message-key', options)
 
 ```html
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage.esm.js';
   
   // Send message
   const result = await sendUntilAck('data', { message: 'Hello World' });
