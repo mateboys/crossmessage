@@ -107,9 +107,29 @@ function sendUntilAck(key, payload, opts) {
     // 1. 优先使用用户显式提供的窗口名称（独立标签页通信）
     if (typeof targetWindowName === "string" && targetWindowName.trim()) {
       try {
+        // 使用 window.open 的特性：如果窗口存在则返回引用，不存在则创建
         const found = window.open('', targetWindowName.trim());
-        if (found && found !== window && !found.closed) {
-          resolvedTargetWindow = found;
+        // 关键检测：如果是刚创建的新窗口，它的 location.href 会是 'about:blank'
+        // 且没有 opener（因为我们用空 URL 打开的）
+        if (found && found !== window) {
+          // 检查是否是刚创建的空白窗口
+          try {
+            const isNewBlank = found.location.href === 'about:blank' && 
+                               found.document.title === '' &&
+                               !found.document.body?.hasChildNodes();
+            if (isNewBlank) {
+              // 这是新创建的窗口，说明目标不存在，立即关闭它
+              found.close();
+            } else if (!found.closed) {
+              // 这是已存在的窗口
+              resolvedTargetWindow = found;
+            }
+          } catch (e) {
+            // 跨域情况下无法访问 location，但说明窗口确实存在
+            if (!found.closed) {
+              resolvedTargetWindow = found;
+            }
+          }
         }
       } catch (_) {}
     }
