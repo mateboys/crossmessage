@@ -34,6 +34,7 @@ Its main purpose is to enable stable and reliable data transmission between two 
 | 🎯 **Convenient API** | One-click window opening and message sending | Simplifies development process |
 | 🔍 **Status Monitoring** | Real-time target window status detection | Handles exceptions promptly |
 | 📱 **Window Close Alert** | Automatic detection of target window close status | Avoids invalid retries |
+| 🧠 **Smart Window Detection** | Automatically finds target windows across different scenarios | Works with popups, iframes, and independent tabs |
 
 ## 📦 Quick Start
 
@@ -183,6 +184,7 @@ Sends a message to the target window and continuously retries until acknowledgme
   - `interval` `(number)` - Retry interval, default `1000ms`
   - `timeout` `(number)` - Timeout, default `5000ms`
   - `targetWindow` `(Window)` - Target window, auto-detected by default
+  - `targetWindowName` `(string)` - Target window name. When set, the library will resolve window via `window.open('', name)` (for cross-tab)
   - `targetOrigin` `(string)` - Target domain, default `"*"`
 
 **Returns:** `Promise<{key}>` - Returns object containing key on success
@@ -210,6 +212,9 @@ Listens for and receives a message with the specified key, automatically stops l
 - `options` `(object)` - Configuration options
   - `allowedOrigins` `(string[])` - Allowed source domains, default `["*"]`
   - `expectedSourceWindow` `(Window)` - Expected source window
+  - `name` `(string | { value: string; deep?: boolean })` - Receiver page window name helper
+    - string: set `window.name` if it's empty (non-destructive)
+    - object: `{ value, deep: true }` to force override `window.name`
 
 **Returns:** `Promise<any>` - Received data
 
@@ -244,6 +249,75 @@ const result = await openAndSend('/login', 'auth-config', {
   theme: 'dark'
 }, {
   windowFeatures: 'width=400,height=600,scrollbars=yes'
+});
+```
+
+## 🧠 Smart Window Resolution (Updated)
+
+CrossMessage resolves target window by the following rules:
+
+1. **Explicit `targetWindow`**: Highest priority
+2. **Explicit `targetWindowName`**: Resolve via `window.open('', name)` (cross-tab scenario)
+3. **Parent / Opener**: `window.opener` or `window.parent` (popup/iframe)
+4. **Otherwise**: Throws with guidance to pass `targetWindow` or `targetWindowName`
+
+This makes behavior predictable and avoids guessing. For cross-tab communication, set window name on the receiver and pass `targetWindowName` from the sender.
+
+### Cross-Tab Communication Patterns
+
+Below are three recommended patterns. Pick ONE that fits your scenario. All rely on the same APIs described above; no duplicate API docs here.
+
+1) Without name, by obtaining window handle (via jump / reference)
+
+Receiver (Tab B) – opened or navigated to, no special setup required:
+```js
+// Start listening when the page is ready
+receiveOnce('user-sync', { allowedOrigins: ['https://app-a.example.com'] })
+  .then(handle => console.log('received:', handle));
+```
+
+Sender (Tab A) – obtain a Window reference, then send:
+```js
+// For example, navigate to B first and keep a handle
+const b = window.open('/tab-b', '_blank'); // or reuse an existing iframe/handle
+
+await sendUntilAck('user-sync', { userId: 'u-1001' }, {
+  targetWindow: b,
+  targetOrigin: 'https://app-b.example.com',
+  timeout: 8000
+});
+```
+
+2) Simplest: use `openAndSend`
+
+```js
+await openAndSend('https://app-b.example.com/tab-b', 'user-sync', { userId: 'u-1001' }, {
+  windowFeatures: 'width=1200,height=800',
+  timeout: 8000
+});
+```
+
+3) By name (recommended for independent tabs)
+
+Receiver (Tab B):
+```html
+<script src="/crossmessage.js"></script>
+<script>
+  // Force set window.name for reliable addressing
+  CrossMessage.receiveOnce('init', { name: { value: 'account-center', deep: true }, timeout: 1 }).catch(()=>{});
+
+  // Later, actually receive business data
+  CrossMessage.receiveOnce('user-sync', { allowedOrigins: ['https://app-a.example.com'] })
+    .then(data => console.log('received:', data));
+</script>
+```
+
+Sender (Tab A):
+```js
+await sendUntilAck('user-sync', { userId: 'u-1001' }, {
+  targetWindowName: 'account-center',
+  targetOrigin: 'https://app-b.example.com',
+  timeout: 8000
 });
 ```
 

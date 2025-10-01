@@ -17,8 +17,8 @@
   "use strict";
 
   /* -------------------- 常量 -------------------- */
-  const MSG_TYPE = "CROSSPOST_MSG";
-  const ACK_TYPE = "CROSSPOST_ACK";
+  const MSG_TYPE = "CROSSMESSAGE_MSG";
+  const ACK_TYPE = "CROSSMESSAGE_ACK";
 
   /* -------------------- 内部存储 -------------------- */
   const senders = new Map(); // key -> { stop, resolve, reject }
@@ -104,14 +104,31 @@
       interval = 1000,
       timeout = 5000,
       targetWindow,
+      targetWindowName, // 新增：可选的目标窗口名称（用于跨标签页）
       targetOrigin = "*",
     } = opts || {};
-    const resolvedTargetWindow =
-      targetWindow ||
-      (typeof window !== "undefined" &&
-        (window.opener || window.parent || window));
+    // 智能解析目标窗口
+    let resolvedTargetWindow = targetWindow;
+    
+    if (!resolvedTargetWindow && typeof window !== "undefined") {
+      // 1. 优先使用用户显式提供的窗口名称（独立标签页通信）
+      if (typeof targetWindowName === "string" && targetWindowName.trim()) {
+        try {
+          const found = window.open('', targetWindowName.trim());
+          if (found && found !== window && !found.closed) {
+            resolvedTargetWindow = found;
+          }
+        } catch (_) {}
+      }
+      // 2. 尝试父子窗口关系（弹窗/iframe场景）
+      if (!resolvedTargetWindow && (window.opener || window.parent)) {
+        resolvedTargetWindow = window.opener || window.parent;
+      }
+      // 3. 若仍未解析，交由调用方显式传入
+    }
+    
     if (!resolvedTargetWindow) {
-      return Promise.reject(new Error("[CrossMessage] 未能解析 targetWindow"));
+      return Promise.reject(new Error("[CrossMessage] 未能解析 targetWindow。请传入 targetWindow 或 targetWindowName，并确保接收端已设置 window.name。"));
     }
 
     // 检查混合内容安全问题（如果指定了具体的 targetOrigin）
@@ -194,7 +211,34 @@
   function receiveOnce(key, opts) {
     if (receivers.has(key)) return receivers.get(key).promise;
 
-    const { allowedOrigins = ["*"], expectedSourceWindow } = opts || {};
+    const { allowedOrigins = ["*"], expectedSourceWindow, name } = opts || {};
+
+    // 可选：为接收端设置窗口名称，便于跨标签页通过名称定位
+    try {
+      if (typeof window !== "undefined" && name != null) {
+        let desiredName = undefined;
+        let forceDeep = false;
+        if (typeof name === "string") {
+          desiredName = name.trim();
+        } else if (name && typeof name === "object") {
+          if (typeof name.value === "string") desiredName = name.value.trim();
+          if (name.deep === true) forceDeep = true;
+        }
+        if (desiredName) {
+          if (forceDeep) {
+            window.name = desiredName;
+          } else {
+            if (!window.name) {
+              window.name = desiredName;
+            } else if (window.name !== desiredName) {
+              console.warn(
+                `[CrossMessage] 当前页已存在 window.name="${window.name}"，未覆盖为 "${desiredName}"。如需强制，请传 { name: { value: "${desiredName}", deep: true } }`
+              );
+            }
+          }
+        }
+      }
+    } catch (_) {}
 
     let resolve, reject;
     const promise = new Promise((res, rej) => {

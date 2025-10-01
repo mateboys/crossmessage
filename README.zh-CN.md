@@ -186,6 +186,7 @@ CrossMessage.receiveOnce('message-key', options)
   - `interval` `(number)` - 重试间隔，默认 `1000ms`
   - `timeout` `(number)` - 超时时间，默认 `5000ms`
   - `targetWindow` `(Window)` - 目标窗口，默认自动检测
+  - `targetWindowName` `(string)` - 目标窗口名称。设置后库内部通过 `window.open('', name)` 按名解析（跨标签页场景）
   - `targetOrigin` `(string)` - 目标域名，默认 `"*"`
 
 **返回值:** `Promise<{key}>` - 成功时返回包含key的对象
@@ -213,6 +214,9 @@ const result = await sendUntilAck('user-login', {
 - `options` `(object)` - 配置选项
   - `allowedOrigins` `(string[])` - 允许的来源域名，默认 `["*"]`
   - `expectedSourceWindow` `(Window)` - 期望的源窗口
+  - `name` `(string | { value: string; deep?: boolean })` - 接收端页面窗口名设置
+    - 传字符串：若当前页无 `window.name` 则设置（不覆盖已有值）
+    - 传对象：`{ value, deep: true }` 强制覆盖 `window.name`
 
 **返回值:** `Promise<any>` - 接收到的数据
 
@@ -251,6 +255,72 @@ const result = await openAndSend('/login', 'auth-config', {
 ```
 
 ## 🎯 实际应用场景
+
+## 🧠 智能窗口解析（已更新）
+
+解析顺序：
+
+1. **显式 `targetWindow`**（最高优先级）
+2. **显式 `targetWindowName`**：通过 `window.open('', name)` 按名解析（跨标签页）
+3. **父/子窗口**：`window.opener` 或 `window.parent`（弹窗/iframe）
+4. **否则抛错**：提示传 `targetWindow` 或 `targetWindowName`，并确保接收端设置了 `window.name`
+
+### 跨标签页通信方式
+
+以下三种方式三选一，均复用前文 API，不重复赘述：
+
+1) 不使用 name，直接使用窗口句柄（通过跳转/引用拿到）
+
+接收端（标签页B）：
+```js
+receiveOnce('user-sync', { allowedOrigins: ['https://app-a.example.com'] })
+  .then(data => console.log('received:', data));
+```
+
+发送端（标签页A）：
+```js
+// 例如先跳转/打开B并保留引用
+const b = window.open('/tab-b', '_blank');
+
+await sendUntilAck('user-sync', { userId: 'u-1001' }, {
+  targetWindow: b,
+  targetOrigin: 'https://app-b.example.com',
+  timeout: 8000
+});
+```
+
+2) 最简方式：使用 `openAndSend`
+
+```js
+await openAndSend('https://app-b.example.com/tab-b', 'user-sync', { userId: 'u-1001' }, {
+  windowFeatures: 'width=1200,height=800',
+  timeout: 8000
+});
+```
+
+3) 通过 name 按名寻址（独立标签页推荐）
+
+接收端（标签页B）：
+```html
+<script src="/crossmessage.js"></script>
+<script>
+  // 强制设置 window.name，便于按名寻址
+  CrossMessage.receiveOnce('init', { name: { value: 'account-center', deep: true }, timeout: 1 }).catch(()=>{});
+
+  // 实际接收业务数据
+  CrossMessage.receiveOnce('user-sync', { allowedOrigins: ['https://app-a.example.com'] })
+    .then(data => console.log('received:', data));
+</script>
+```
+
+发送端（标签页A）：
+```js
+await sendUntilAck('user-sync', { userId: 'u-1001' }, {
+  targetWindowName: 'account-center',
+  targetOrigin: 'https://app-b.example.com',
+  timeout: 8000
+});
+```
 
 ### 1. 企业级单点登录 (SSO)
 
