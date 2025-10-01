@@ -1,9 +1,9 @@
 /* global define, module */
 /*!
- * crosspost.js  ·  跨域窗口可靠消息投递
- * @Author: 刘希航 <mateboy@foxmail.com>
- * @Date: 2025-10-01 10:29:56
- * @Description: 跨窗口可靠消息投递，兼容：IIFE / UMD（AMD、CommonJS、script 标签）
+ * crossmessage.js  ·  Cross-Domain Window Reliable Message Delivery
+ * @Author: 刘希航 <liu.xihang@zte.com.cn>
+ * @Date: 2025-10-01 15:00:00
+ * @Description: Enterprise-grade cross-domain window communication library with reliable message delivery guarantee
  */
 (function (root, factory) {
   if (typeof define === "function" && define.amd) {
@@ -11,7 +11,7 @@
   } else if (typeof module === "object" && module.exports) {
     module.exports = factory();
   } else {
-    root.CrossPost = factory();
+    root.CrossMessage = factory();
   }
 })(typeof self !== "undefined" ? self : this, function () {
   "use strict";
@@ -96,7 +96,7 @@
   function sendUntilAck(key, payload, opts) {
     if (senders.has(key)) {
       return Promise.reject(
-        new Error(`[CrossPost] key="${key}" 的发送任务已存在`)
+        new Error(`[CrossMessage] key="${key}" 的发送任务已存在`)
       );
     }
 
@@ -111,14 +111,14 @@
       (typeof window !== "undefined" &&
         (window.opener || window.parent || window));
     if (!resolvedTargetWindow) {
-      return Promise.reject(new Error("[CrossPost] 未能解析 targetWindow"));
+      return Promise.reject(new Error("[CrossMessage] 未能解析 targetWindow"));
     }
 
     // 检查混合内容安全问题（如果指定了具体的 targetOrigin）
     if (targetOrigin !== "*") {
       const mixedCheck = checkMixedContent(targetOrigin);
       if (!mixedCheck.safe) {
-        return Promise.reject(new Error(`[CrossPost] ${mixedCheck.reason}`));
+        return Promise.reject(new Error(`[CrossMessage] ${mixedCheck.reason}`));
       }
     }
 
@@ -152,7 +152,7 @@
       timeoutId = setTimeout(() => {
         cleanup();
         reject(
-          new Error(`[CrossPost] key="${key}" 等待回执超时（${timeout}ms）`)
+          new Error(`[CrossMessage] key="${key}" 等待回执超时（${timeout}ms）`)
         );
       }, timeout);
 
@@ -160,7 +160,7 @@
         // 检查目标窗口是否已关闭
         if (isWindowClosed(resolvedTargetWindow)) {
           cleanup();
-          reject(new Error(`[CrossPost] key="${key}" 目标窗口已关闭`));
+          reject(new Error(`[CrossMessage] key="${key}" 目标窗口已关闭`));
           return;
         }
         post(
@@ -256,14 +256,14 @@
     // 清理 URL：去除首尾空格
     const cleanUrl = typeof url === "string" ? url.trim() : url;
     if (!cleanUrl) {
-      return Promise.reject(new Error("[CrossPost] URL 不能为空"));
+      return Promise.reject(new Error("[CrossMessage] URL 不能为空"));
     }
 
     // 自动提取 targetOrigin，如果失败则回退到 '*'
     let targetOrigin = extractOrigin(cleanUrl);
     if (!targetOrigin) {
       console.warn(
-        `[CrossPost] 无法从 URL "${cleanUrl}" 提取 origin，回退到 '*'`
+        `[CrossMessage] 无法从 URL "${cleanUrl}" 提取 origin，回退到 '*'`
       );
       targetOrigin = "*";
     }
@@ -272,7 +272,7 @@
     if (targetOrigin !== "*") {
       const mixedCheck = checkMixedContent(targetOrigin);
       if (!mixedCheck.safe) {
-        return Promise.reject(new Error(`[CrossPost] ${mixedCheck.reason}`));
+        return Promise.reject(new Error(`[CrossMessage] ${mixedCheck.reason}`));
       }
     }
 
@@ -280,7 +280,7 @@
     const targetWindow = window.open(cleanUrl, "_blank", windowFeatures);
     if (!targetWindow) {
       // 提供更详细的错误信息
-      const errorMsg = `[CrossPost] 无法打开目标窗口，可能的原因：
+      const errorMsg = `[CrossMessage] 无法打开目标窗口，可能的原因：
   1. 浏览器弹窗拦截器阻止了窗口打开
   2. 当前调用不在用户交互事件中（如点击事件）
   3. 浏览器达到窗口数量限制

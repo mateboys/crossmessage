@@ -1,13 +1,15 @@
 {
-  "name": "crosspost-js",
-  "version": "1.0.1",
-  "description": "跨窗口可靠消息投递库，基于postMessage实现",
-  "main": "crosspost.js",
-  "module": "crosspost.esm.js",
+  "name": "crossmessage",
+  "version": "1.0.0",
+  "description": "Enterprise-grade cross-domain window communication library with reliable message delivery guarantee",
+  "main": "crossmessage.js",
+  "module": "crossmessage.esm.js",
   "type": "module",
   "files": [
-    "crosspost.js",
-    "crosspost.esm.js",
+    "crossmessage.js",
+    "crossmessage.esm.js",
+    "crossmessage.min.js",
+    "crossmessage.esm.min.js",
     "README.md",
     "LICENSE"
   ],
@@ -16,25 +18,27 @@
   },
   "keywords": [
     "postmessage",
-    "cross-window",
+    "cross-domain",
     "message",
     "communication",
     "iframe",
     "popup",
     "cross-origin",
     "reliable",
-    "acknowledgment"
+    "acknowledgment",
+    "enterprise",
+    "crossmessage"
   ],
   "author": "刘希航 <liu.xihang@zte.com.cn>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mateboys/crosspost.git"
+    "url": "git+https://github.com/mateboys/crossmessage.git"
   },
   "bugs": {
-    "url": "https://github.com/mateboys/crosspost/issues"
+    "url": "https://github.com/mateboys/crossmessage/issues"
   },
-  "homepage": "https://github.com/mateboys/crosspost#readme",
+  "homepage": "https://github.com/mateboys/crossmessage#readme",
   "engines": {
     "node": ">=14.0.0"
   },
@@ -42,5 +46,8 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "devDependencies": {
+    "terser": "^5.44.0"
+  }
 }

@@ -1,4 +1,4 @@
-# CrossPost.js
+# CrossMessage
 
 <div align="right">
 
@@ -6,13 +6,13 @@
 
 </div>
 
-[![npm version](https://badge.fury.io/js/crosspost-js.svg)](https://badge.fury.io/js/crosspost-js)
+[![npm version](https://badge.fury.io/js/crossmessage.svg)](https://badge.fury.io/js/crossmessage)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/mateboys/crosspost.svg)](https://github.com/mateboys/crosspost/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/mateboys/crosspost.svg)](https://github.com/mateboys/crosspost/issues)
 
 
-CrossPost.js is a cross-domain window communication library based on `postMessage`, designed to solve reliable data transmission between cross-domain web applications. When traditional URL parameter passing methods cannot meet complex data exchange requirements, CrossPost.js provides a stable, secure, and easy-to-use solution.
+CrossMessage is a cross-domain window communication library based on `postMessage`, designed to solve reliable data transmission between cross-domain web applications. When traditional URL parameter passing methods cannot meet complex data exchange requirements, CrossMessage provides a stable, secure, and easy-to-use solution.
 
 Its main purpose is to enable stable and reliable data transmission between two cross-domain web applications when URL message passing is not suitable. The principle is that the sender repeatedly sends messages to the receiver, and when the receiver receives the message, it returns a success confirmation to the sender, ensuring successful data delivery.
 
@@ -41,13 +41,13 @@ Its main purpose is to enable stable and reliable data transmission between two 
 
 ```bash
 # npm
-npm install crosspost-js
+npm install crossmessage
 
 # yarn
-yarn add crosspost-js
+yarn add crossmessage
 
 # pnpm
-pnpm add crosspost-js
+pnpm add crossmessage
 ```
 
 ### CDN Reference
@@ -56,30 +56,30 @@ pnpm add crosspost-js
 
 ```html
 <!-- UMD Version -->
-<script src="https://unpkg.com/crosspost-js@latest/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage@latest/crosspost.js"></script>
 
 <!-- ES Module Version -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crosspost-js@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crosspost.esm.js';
 </script>
 
 <!-- Specific Version -->
-<script src="https://unpkg.com/crosspost-js@1.0.1/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage@1.0.1/crosspost.js"></script>
 ```
 
 #### jsDelivr
 
 ```html
 <!-- UMD Version -->
-<script src="https://cdn.jsdelivr.net/npm/crosspost-js@latest/crosspost.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage@latest/crosspost.js"></script>
 
 <!-- ES Module Version -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crosspost-js@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage@latest/crosspost.esm.js';
 </script>
 
 <!-- Specific Version -->
-<script src="https://cdn.jsdelivr.net/npm/crosspost-js@1.0.1/crosspost.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage@1.0.1/crosspost.js"></script>
 ```
 
 #### CDN Advantages
@@ -96,7 +96,7 @@ pnpm add crosspost-js
 #### ES Module (Recommended)
 
 ```javascript
-import { sendUntilAck, receiveOnce, openAndSend } from 'crosspost-js';
+import { sendUntilAck, receiveOnce, openAndSend } from 'crossmessage';
 
 // 📤 Send message - wait for acknowledgment
 const result = await sendUntilAck('user-data', { 
@@ -124,15 +124,15 @@ const result = await openAndSend('https://example.com/page', 'init-data', {
 #### UMD / CommonJS
 
 ```javascript
-const CrossPost = require('crosspost-js');
+const CrossMessage = require('crossmessage');
 
 // Send message
-CrossPost.sendUntilAck('message-key', payload, options)
+CrossMessage.sendUntilAck('message-key', payload, options)
   .then(result => console.log('✅ Send success:', result))
   .catch(error => console.error('❌ Send failed:', error));
 
 // Receive message
-CrossPost.receiveOnce('message-key', options)
+CrossMessage.receiveOnce('message-key', options)
   .then(data => console.log('📨 Message received:', data));
 ```
 
@@ -140,14 +140,14 @@ CrossPost.receiveOnce('message-key', options)
 
 ```html
 <!-- Using unpkg CDN -->
-<script src="https://unpkg.com/crosspost-js@latest/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage@latest/crosspost.js"></script>
 <script>
   // Send message
-  CrossPost.sendUntilAck('data', { message: 'Hello World' })
+  CrossMessage.sendUntilAck('data', { message: 'Hello World' })
     .then(result => console.log('✅ Success:', result));
   
   // Receive message
-  CrossPost.receiveOnce('data')
+  CrossMessage.receiveOnce('data')
     .then(data => console.log('📨 Received:', data));
 </script>
 ```
@@ -156,7 +156,7 @@ CrossPost.receiveOnce('message-key', options)
 
 ```html
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crosspost-js@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crosspost.esm.js';
   
   // Send message
   const result = await sendUntilAck('data', { message: 'Hello World' });
@@ -381,7 +381,7 @@ await sendUntilAck('data', payload, {
 
 ## 🤝 Contributing
 
-We welcome all forms of contributions! Whether reporting issues, suggesting features, or submitting code, all help make CrossPost.js better.
+We welcome all forms of contributions! Whether reporting issues, suggesting features, or submitting code, all help make CrossMessage better.
 
 ### Ways to Contribute
 
@@ -410,7 +410,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <div align="center">
 
-**⭐ If CrossPost.js helps you, please give us a star!**
+**⭐ If CrossMessage helps you, please give us a star!**
 
 [![GitHub stars](https://img.shields.io/github/stars/mateboys/crosspost.svg?style=social&label=Star)](https://github.com/mateboys/crosspost/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/mateboys/crosspost.svg?style=social&label=Fork)](https://github.com/mateboys/crosspost/network)

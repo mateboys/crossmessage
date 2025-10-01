@@ -1,4 +1,4 @@
-# CrossPost.js
+# CrossMessage
 
 <div align="right">
 
@@ -6,12 +6,12 @@
 
 </div>
 
-[![npm version](https://badge.fury.io/js/crosspost-js.svg)](https://badge.fury.io/js/crosspost-js)
+[![npm version](https://badge.fury.io/js/crossmessage.svg)](https://badge.fury.io/js/crossmessage)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/mateboys/crosspost.svg)](https://github.com/mateboys/crosspost/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/mateboys/crosspost.svg)](https://github.com/mateboys/crosspost/issues)
 
-CrossPost.js 是一个基于 `postMessage` 的跨域窗口通信库，专为解决跨域 Web 应用间的可靠数据传递而设计。当传统的 URL 参数传递方式无法满足复杂数据交换需求时，CrossPost.js 提供了稳定、安全、易用的解决方案。
+CrossMessage 是一个基于 `postMessage` 的跨域窗口通信库，专为解决跨域 Web 应用间的可靠数据传递而设计。当传统的 URL 参数传递方式无法满足复杂数据交换需求时，CrossMessage 提供了稳定、安全、易用的解决方案。
 
 它最大的用途在于，当两个跨域web应用之前需要传递消息，且不适用于url消息传递时，使用本库
 可稳定可靠做到数据传递
@@ -44,13 +44,13 @@ CrossPost.js 是一个基于 `postMessage` 的跨域窗口通信库，专为解�
 
 ```bash
 # npm
-npm install crosspost-js
+npm install crossmessage
 
 # yarn
-yarn add crosspost-js
+yarn add crossmessage
 
 # pnpm
-pnpm add crosspost-js
+pnpm add crossmessage
 ```
 
 ### CDN 引用
@@ -59,30 +59,30 @@ pnpm add crosspost-js
 
 ```html
 <!-- UMD 版本 -->
-<script src="https://unpkg.com/crosspost-js@latest/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage@latest/crosspost.js"></script>
 
 <!-- ES Module 版本 -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crosspost-js@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crosspost.esm.js';
 </script>
 
 <!-- 指定版本 -->
-<script src="https://unpkg.com/crosspost-js@1.0.1/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage@1.0.1/crosspost.js"></script>
 ```
 
 #### jsDelivr
 
 ```html
 <!-- UMD 版本 -->
-<script src="https://cdn.jsdelivr.net/npm/crosspost-js@latest/crosspost.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage@latest/crosspost.js"></script>
 
 <!-- ES Module 版本 -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crosspost-js@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage@latest/crosspost.esm.js';
 </script>
 
 <!-- 指定版本 -->
-<script src="https://cdn.jsdelivr.net/npm/crosspost-js@1.0.1/crosspost.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage@1.0.1/crosspost.js"></script>
 ```
 
 #### CDN 优势
@@ -99,7 +99,7 @@ pnpm add crosspost-js
 #### ES Module (推荐)
 
 ```javascript
-import { sendUntilAck, receiveOnce, openAndSend } from 'crosspost-js';
+import { sendUntilAck, receiveOnce, openAndSend } from 'crossmessage';
 
 // 📤 发送消息 - 等待确认
 const result = await sendUntilAck('user-data', { 
@@ -127,15 +127,15 @@ const result = await openAndSend('https://example.com/page', 'init-data', {
 ### UMD / CommonJS
 
 ```javascript
-const CrossPost = require('crosspost-js');
+const CrossMessage = require('crossmessage');
 
 // 发送消息
-CrossPost.sendUntilAck('message-key', payload, options)
+CrossMessage.sendUntilAck('message-key', payload, options)
   .then(result => console.log('✅ 发送成功:', result))
   .catch(error => console.error('❌ 发送失败:', error));
 
 // 接收消息
-CrossPost.receiveOnce('message-key', options)
+CrossMessage.receiveOnce('message-key', options)
   .then(data => console.log('📨 收到消息:', data));
 ```
 
@@ -143,14 +143,14 @@ CrossPost.receiveOnce('message-key', options)
 
 ```html
 <!-- 使用 unpkg CDN -->
-<script src="https://unpkg.com/crosspost-js@latest/crosspost.js"></script>
+<script src="https://unpkg.com/crossmessage@latest/crosspost.js"></script>
 <script>
   // 发送消息
-  CrossPost.sendUntilAck('data', { message: 'Hello World' })
+  CrossMessage.sendUntilAck('data', { message: 'Hello World' })
     .then(result => console.log('✅ 成功:', result));
   
   // 接收消息
-  CrossPost.receiveOnce('data')
+  CrossMessage.receiveOnce('data')
     .then(data => console.log('📨 收到:', data));
 </script>
 ```
@@ -159,7 +159,7 @@ CrossPost.receiveOnce('message-key', options)
 
 ```html
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crosspost-js@latest/crosspost.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage@latest/crosspost.esm.js';
   
   // 发送消息
   const result = await sendUntilAck('data', { message: 'Hello World' });
@@ -404,7 +404,7 @@ console.log('登录完成');
 
 <div align="center">
 
-**⭐ 如果 CrossPost.js 对您有帮助，请给我们一个星标！**
+**⭐ 如果 CrossMessage 对您有帮助，请给我们一个星标！**
 
 [![GitHub stars](https://img.shields.io/github/stars/mateboys/crosspost.svg?style=social&label=Star)](https://github.com/mateboys/crosspost/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/mateboys/crosspost.svg?style=social&label=Fork)](https://github.com/mateboys/crosspost/network)
