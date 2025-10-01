@@ -8,8 +8,8 @@
 
 [![npm version](https://badge.fury.io/js/crossmessage-js.svg)](https://badge.fury.io/js/crossmessage-js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crosspost.svg)](https://github.com/mateboys/crosspost/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/mateboys/crosspost.svg)](https://github.com/mateboys/crosspost/issues)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/mateboys/crossmessage.svg)](https://github.com/mateboys/crossmessage/issues)
 
 
 CrossMessage is a cross-domain window communication library based on `postMessage`, designed to solve reliable data transmission between cross-domain web applications. When traditional URL parameter passing methods cannot meet complex data exchange requirements, CrossMessage provides a stable, secure, and easy-to-use solution.
@@ -385,7 +385,7 @@ We welcome all forms of contributions! Whether reporting issues, suggesting feat
 
 ### Ways to Contribute
 
-- 🐛 **Report Bugs**: Report issues in [Issues](https://github.com/mateboys/crosspost/issues)
+- 🐛 **Report Bugs**: Report issues in [Issues](https://github.com/mateboys/crossmessage/issues)
 - 💡 **Feature Suggestions**: Propose new features or improvements
 - 📝 **Documentation Improvements**: Improve documentation and examples
 - 🔧 **Code Contributions**: Submit Pull Requests
@@ -412,7 +412,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 **⭐ If CrossMessage helps you, please give us a star!**
 
-[![GitHub stars](https://img.shields.io/github/stars/mateboys/crosspost.svg?style=social&label=Star)](https://github.com/mateboys/crosspost/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/mateboys/crosspost.svg?style=social&label=Fork)](https://github.com/mateboys/crosspost/network)
+[![GitHub stars](https://img.shields.io/github/stars/mateboys/crossmessage.svg?style=social&label=Star)](https://github.com/mateboys/crossmessage/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/mateboys/crossmessage.svg?style=social&label=Fork)](https://github.com/mateboys/crossmessage/network)
 
 </div>
