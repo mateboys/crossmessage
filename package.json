@@ -1,0 +1,46 @@
+{
+  "name": "crosspost-js",
+  "version": "1.0.1",
+  "description": "跨窗口可靠消息投递库，基于postMessage实现",
+  "main": "crosspost.js",
+  "module": "crosspost.esm.js",
+  "type": "module",
+  "files": [
+    "crosspost.js",
+    "crosspost.esm.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "postmessage",
+    "cross-window",
+    "message",
+    "communication",
+    "iframe",
+    "popup",
+    "cross-origin",
+    "reliable",
+    "acknowledgment"
+  ],
+  "author": "刘希航 <liu.xihang@zte.com.cn>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateboys/crosspost.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mateboys/crosspost/issues"
+  },
+  "homepage": "https://github.com/mateboys/crosspost#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
