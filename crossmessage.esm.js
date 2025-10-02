@@ -1,6 +1,6 @@
 /*!
  * crossmessage.esm.js  ·  跨域窗口可靠消息投递 (ES Module)
- * @Author: 刘希航 <mateboy@foxmail.com>
+ * @Author: Liu Xihang <mateboy@foxmail.com>
  * @Date: 2025-10-01 20:00:00
  * @Description: 跨域窗口可靠消息投递，兼容：ES Module
  *  发送方：sendUntilAck(key, payload, opts)  -> Promise
