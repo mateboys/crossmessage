@@ -411,7 +411,7 @@ We welcome all forms of contributions! Whether reporting issues, suggesting feat
 
 ### Ways to Contribute
 
-- 🐛 **Report Bugs**: Report issues in [Issues](https://github.com/mateboys/crossmessage-js/issues)
+- 🐛 **Report Bugs**: Report issues in [Issues](https://github.com/mateboys/crossmessage/issues)
 - 💡 **Feature Suggestions**: Propose new features or improvements
 - 📝 **Documentation Improvements**: Improve documentation and examples
 - 🔧 **Code Contributions**: Submit Pull Requests
