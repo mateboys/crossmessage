@@ -404,59 +404,6 @@ const formData = await receiveOnce('form-data');
 | 🧹 **内存管理** | 库会自动清理超时和完成的连接 | 无需手动清理，但避免重复创建 |
 | ⏱️ **超时处理** | 网络不稳定时可能超时 | 适当调整 `timeout` 和 `interval` 参数 |
 
-## 🔧 最佳实践
-
-### 1. 安全配置
-
-```javascript
-// ✅ 推荐：明确指定允许的域名
-await sendUntilAck('data', payload, {
-  targetOrigin: 'https://trusted-domain.com'
-});
-
-await receiveOnce('data', {
-  allowedOrigins: ['https://trusted-domain.com']
-});
-
-// ❌ 避免：使用通配符 "*"
-await sendUntilAck('data', payload, {
-  targetOrigin: '*' // 不安全
-});
-```
-
-### 2. 错误处理
-
-```javascript
-try {
-  const result = await sendUntilAck('important-data', payload, {
-    timeout: 10000,
-    interval: 1000
-  });
-  console.log('✅ 消息发送成功:', result);
-} catch (error) {
-  console.error('❌ 消息发送失败:', error.message);
-  // 处理失败情况
-}
-```
-
-### 3. 弹窗登录
-
-```javascript
-// 打开登录窗口并发送配置
-const result = await openAndSend('/login', 'login-config', {
-  returnUrl: window.location.href,
-  theme: 'dark'
-});
-console.log('登录完成');
-```
-
-## ⚠️ 注意事项
-
-1. **混合内容安全**: HTTPS 页面无法向 HTTP 页面发送消息
-2. **弹窗拦截**: `openAndSend` 需要在用户交互事件中调用
-3. **跨域限制**: 需要正确设置 `targetOrigin` 和 `allowedOrigins`
-4. **内存管理**: 库会自动清理超时和完成的连接
-
 ## 🤝 贡献
 
 欢迎提交 Issue 和 Pull Request！

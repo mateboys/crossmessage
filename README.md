@@ -405,53 +405,6 @@ const formData = await receiveOnce('form-data');
 | 🧹 **Memory Management** | Library automatically cleans up timed-out and completed connections | No manual cleanup needed, but avoid duplicate creation |
 | ⏱️ **Timeout Handling** | May timeout when network is unstable | Appropriately adjust `timeout` and `interval` parameters |
 
-## 🔧 Best Practices
-
-### 1. Security Configuration
-
-```javascript
-// ✅ Recommended: explicitly specify allowed domains
-await sendUntilAck('data', payload, {
-  targetOrigin: 'https://trusted-domain.com'
-});
-
-await receiveOnce('data', {
-  allowedOrigins: ['https://trusted-domain.com']
-});
-
-// ❌ Avoid: using wildcard "*"
-await sendUntilAck('data', payload, {
-  targetOrigin: '*' // Insecure
-});
-```
-
-### 2. Error Handling
-
-```javascript
-try {
-  const result = await sendUntilAck('important-data', payload, {
-    timeout: 10000,
-    interval: 1000
-  });
-  console.log('✅ Message sent successfully:', result);
-} catch (error) {
-  console.error('❌ Message send failed:', error.message);
-  // Handle failure case
-}
-```
-
-### 3. Performance Optimization
-
-```javascript
-// Adjust parameters based on network environment
-const isSlowNetwork = navigator.connection?.effectiveType === 'slow-2g';
-
-await sendUntilAck('data', payload, {
-  interval: isSlowNetwork ? 2000 : 1000,
-  timeout: isSlowNetwork ? 15000 : 5000
-});
-```
-
 ## 🤝 Contributing
 
 We welcome all forms of contributions! Whether reporting issues, suggesting features, or submitting code, all help make CrossMessage better.
