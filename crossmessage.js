@@ -2,7 +2,6 @@
 /*!
  * crossmessage.js  ·  Cross-Domain Window Reliable Message Delivery
  * @Author: Liu Xihang <mateboy@foxmail.com>
- * @Date: 2025-10-01 20:00:00
  * @Description: Enterprise-grade cross-domain window communication library with reliable message delivery guarantee
  */
 (function (root, factory) {
