@@ -1,12 +1,12 @@
 /*!
- * crossmessage.esm.js  ·  跨域窗口可靠消息投递 (ES Module)
+ * crossmessage.esm.js  ·  Cross-Domain Window Reliable Message Delivery (ES Module)
  * @Author: Liu Xihang <mateboy@foxmail.com>
  * @Date: 2025-10-01 20:00:00
- * @Description: 跨域窗口可靠消息投递，兼容：ES Module
- *  发送方：sendUntilAck(key, payload, opts)  -> Promise
- *    成功：resolve({key})   失败：reject(Error('超时'))
- *  接收方：receiveOnce(key)  -> Promise<payload>
- *  便捷API：openAndSend(url, key, payload, opts)  -> Promise
+ * @Description: Enterprise-grade cross-domain window communication library with reliable message delivery guarantee
+ *  Sender: sendUntilAck(key, payload, opts)  -> Promise
+ *    Success: resolve({key})   Failure: reject(Error('timeout'))
+ *  Receiver: receiveOnce(key)  -> Promise<payload>
+ *  Utility API: openAndSend(url, key, payload, opts)  -> Promise
  */
 
 /* -------------------- 常量 -------------------- */
