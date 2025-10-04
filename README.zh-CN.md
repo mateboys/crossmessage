@@ -59,30 +59,30 @@ pnpm add crossmessage-js
 
 ```html
 <!-- UMD 版本 -->
-<script src="https://unpkg.com/crossmessage-js@latest/crossmessage-js.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage.js"></script>
 
 <!-- ES Module 版本 -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage-js.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage.esm.js';
 </script>
 
 <!-- 指定版本 -->
-<script src="https://unpkg.com/crossmessage-js@1.0.1/crossmessage-js.js"></script>
+<script src="https://unpkg.com/crossmessage-js@1.0.1/crossmessage.js"></script>
 ```
 
 #### jsDelivr
 
 ```html
 <!-- UMD 版本 -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage-js.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage.js"></script>
 
 <!-- ES Module 版本 -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage-js.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage.esm.js';
 </script>
 
 <!-- 指定版本 -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@1.0.1/crossmessage-js.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@1.0.1/crossmessage.js"></script>
 ```
 
 #### CDN 优势
@@ -143,7 +143,7 @@ CrossMessage.receiveOnce('message-key', options)
 
 ```html
 <!-- 使用 unpkg CDN -->
-<script src="https://unpkg.com/crossmessage-js@latest/crossmessage-js.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage.js"></script>
 <script>
   // 发送消息
   CrossMessage.sendUntilAck('data', { message: 'Hello World' })

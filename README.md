@@ -57,30 +57,30 @@ pnpm add crossmessage-js
 
 ```html
 <!-- UMD Version -->
-<script src="https://unpkg.com/crossmessage-js@latest/crossmessage-js.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage.js"></script>
 
 <!-- ES Module Version -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage-js.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://unpkg.com/crossmessage-js@latest/crossmessage.esm.js';
 </script>
 
 <!-- Specific Version -->
-<script src="https://unpkg.com/crossmessage-js@1.0.1/crossmessage-js.js"></script>
+<script src="https://unpkg.com/crossmessage-js@1.0.1/crossmessage.js"></script>
 ```
 
 #### jsDelivr
 
 ```html
 <!-- UMD Version -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage-js.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage.js"></script>
 
 <!-- ES Module Version -->
 <script type="module">
-  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage-js.esm.js';
+  import { sendUntilAck, receiveOnce } from 'https://cdn.jsdelivr.net/npm/crossmessage-js@latest/crossmessage.esm.js';
 </script>
 
 <!-- Specific Version -->
-<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@1.0.1/crossmessage-js.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crossmessage-js@1.0.1/crossmessage.js"></script>
 ```
 
 #### CDN Advantages
@@ -141,7 +141,7 @@ CrossMessage.receiveOnce('message-key', options)
 
 ```html
 <!-- Using unpkg CDN -->
-<script src="https://unpkg.com/crossmessage-js@latest/crossmessage-js.js"></script>
+<script src="https://unpkg.com/crossmessage-js@latest/crossmessage.js"></script>
 <script>
   // Send message
   CrossMessage.sendUntilAck('data', { message: 'Hello World' })
